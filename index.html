@@ -1,0 +1,85 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>َProgram Statistik</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="box">
+        <h2 class="h2">Statistik</h2>
+            <td><input type="text" id="num1" placeholder="Nilai 1"></td>
+            <td><input type="text" id="num2" placeholder="Nilai 2"></td> 
+            <td><input type="text" id="num3" placeholder="Nilai 3"></td>
+            <div class = "button">
+                <input type="button" value="Hitung" class="Hitung" onclick="Process()">
+                <input type="button" value="Hapus" class="Rata-rata" onclick="remove()">
+            </div>    
+       
+        <br>
+        <tr>
+            <td><label>Rata-Rata = </label></td>
+            <td><label id="average"></label></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Nilai Tertinggi = </label></td>
+            <td><label id="max"></label></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Nilai Terendah = </label></td>
+            <td><label id="min"></label></td>
+        </tr>
+        <br>
+        <tr>
+            <td><label>Nilai Tengah = </label></td>
+            <td><label id="median"></label></td>
+        </tr>
+</div>
+
+<script>
+          function counting(nums1,nums2,nums3){
+                var total,average;
+                total = nums1+nums2+nums3;
+                average = total/3;
+                return average;
+            }
+          function Input(input){
+            var values;
+              values = parseFloat(document.getElementById(input).value);
+            return values;
+          }
+
+          function Process(){
+            var nums1,nums2,nums3,average,Max,Min;
+            nums1 = Input("num1");
+            nums2 = Input("num2");
+            nums3 = Input("num3");
+            average = counting(nums1,nums2,nums3);
+            Max =  Math.max(num1.value,num2.value,num3.value);
+            Min = Math.min(num1.value,num2.value,num3.value);
+
+            const Median = arr => {
+            const mid = Math.floor(arr.length / 2),
+            number = [...arr].sort((a, b) => a - b);
+            return arr.length % 2 !== 0 ? number[mid] : (number[mid - 1] + number[mid]) / 2;
+            };
+
+            //OutPut
+            document.getElementById("average").innerHTML = average;
+            document.getElementById("max").innerHTML = Max;
+            document.getElementById("min").innerHTML = Min;
+            document.getElementById("median").innerHTML = Median([nums1,nums2,nums3]);
+          }
+
+          function remove(){
+            document.getElementById("average").innerHTML = "";
+            document.getElementById("max").innerHTML = "";
+            document.getElementById("min").innerHTML = "";
+            document.getElementById("median").innerHTML = "";
+          }
+      </script>
+</body>
+</html>
